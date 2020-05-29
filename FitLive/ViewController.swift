@@ -10,11 +10,11 @@ import UIKit
 import Quickblox
 import QuickbloxWebRTC
 
-let currentUserEmail = "patrickjh1998@hotmail.com"
-let userToCall = 110223515
+//let currentUserEmail = "patrickjh1998@hotmail.com"
+//let userToCall = 110223515
 
-//let currentUserEmail = "patrickhanna@hotmail.com"
-//let userToCall = 110223451
+let currentUserEmail = "patrickhanna@hotmail.com"
+let userToCall = 110223451
 
 
 class ViewController: UIViewController {
@@ -24,9 +24,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         QBRTCClient.instance().add(self)
-        Networking.logIn(email: currentUserEmail, password: "12345678") { result in
+        let password = "12345678"
+        Networking.logIn(email: currentUserEmail, password: password) { result in
             switch (result){
-            case .success:
+            case .success(let user):
+                QBChat.instance.connect(withUserID: UInt(user.id), password: password) { error in
+                    print("is there an error in QBChat connect?", error)
+                }
                 self.setUpViews()
             case .failure: fatalError()
             }
@@ -69,7 +73,6 @@ class ViewController: UIViewController {
         videoFormat.height = 480
         
         let videoCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
-        
         session.localMediaStream.videoTrack.videoCapture = videoCapture
         
         self.videoView.layoutIfNeeded()
@@ -79,9 +82,6 @@ class ViewController: UIViewController {
         self.videoView.layer.insertSublayer(videoCapture.previewLayer, at: 0)
     }
     
-    
-    
-
 }
 
 

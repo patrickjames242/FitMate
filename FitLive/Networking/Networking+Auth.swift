@@ -48,6 +48,7 @@ extension Networking{
         QBRequest.logIn(withUserLogin: email, password: password, successBlock: { (response, user) in
             let id = Int(user.id)
             let user = User(id: id, email: email)
+            print("The user is logged in so I don't know what these people talking about")
             completion(.success(user))
         }, errorBlock: { completion(.failure($0.error?.error ?? GenericError("An error occured when trying to log in via QBRequest.logIn")))})
     }
