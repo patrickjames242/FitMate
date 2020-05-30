@@ -26,15 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         QBRTCClient.initializeRTC()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
-        
+
         return true
     }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
 
         return true
     }
