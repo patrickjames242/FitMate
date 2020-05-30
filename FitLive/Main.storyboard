@@ -255,7 +255,7 @@
         <!--Item 1-->
         <scene sceneID="hRj-4g-iei">
             <objects>
-                <viewController id="aCZ-0x-Lix" sceneMemberID="viewController">
+                <viewController id="aCZ-0x-Lix" customClass="FitBudyViewController" customModule="FitLive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0w1-1F-BI1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,6 +295,9 @@
                         <viewLayoutGuide key="safeArea" id="hFf-8x-YB0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="cWS-hC-vKB"/>
+                    <connections>
+                        <outlet property="fitBuddiesTable" destination="Jio-eB-jIe" id="qVl-cL-1Tk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4u5-aj-HZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

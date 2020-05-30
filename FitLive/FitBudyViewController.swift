@@ -9,22 +9,32 @@
 import UIKit
 
 class FitBudyViewController: UIViewController {
-
+    
+    @IBOutlet weak var fitBuddiesTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fitBuddiesTable.dataSource = self
+      
     }
     
+    var buddies: [UserInfo] = [
+        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40)
+    ]
+  
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension FitBudyViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return buddies.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = fitBuddiesTable.dequeueReusableCell(withIdentifier: "FitBuddyCell", for: indexPath)
+        cell.textLabel?.text = buddies[indexPath.row].name
+        return cell
+    }
+    
+    
 }
