@@ -17,8 +17,8 @@
 		6083600824807C0000BA0CB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083600724807C0000BA0CB5 /* AppDelegate.swift */; };
 		6083600C24807C0000BA0CB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083600B24807C0000BA0CB5 /* ViewController.swift */; };
 		6083600F24807C0000BA0CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083600D24807C0000BA0CB5 /* Main.storyboard */; };
-		6083601124807C0200BA0CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6083601024807C0200BA0CB5 /* Assets.xcassets */; };
 		6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */; };
+		C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C162449A2481DAD40057B0D5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		6083600724807C0000BA0CB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6083600B24807C0000BA0CB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6083600E24807C0000BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6083601024807C0200BA0CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6083601324807C0200BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6083601524807C0200BA0CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C162449A2481DAD40057B0D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D05218FB288B5373553FAE9D /* Pods_FitLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE6197963E6A7943F6FBA813 /* Pods-FitLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.debug.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +73,8 @@
 		6034FA86248100A20087BD20 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				6083601024807C0200BA0CB5 /* Assets.xcassets */,
 				6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */,
+				C162449A2481DAD40057B0D5 /* Assets.xcassets */,
 				6083601524807C0200BA0CB5 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -199,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */,
-				6083601124807C0200BA0CB5 /* Assets.xcassets in Resources */,
+				C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */,
 				6083600F24807C0000BA0CB5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
