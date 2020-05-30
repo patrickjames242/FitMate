@@ -13,11 +13,12 @@ class BuddyCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var callButton: UIButton!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
        
     }
   
