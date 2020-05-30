@@ -10,8 +10,7 @@ import UIKit
 import Quickblox
 import QuickbloxWebRTC
 
-//let currentUserEmail = "patrickjh1998@hotmail.com"
-//let userToCall = 110223515
+
 
 class ViewController: UIViewController {
     
@@ -20,10 +19,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIFont.fontNames(forFamilyName: "Karla").forEach({print($0)})
-            
-        let font = UIFont(name: "Karla-Regular", size: 15)
-        slogan.font = font
+                    
+//        let font = UIFont(name: "Karla-Regular", size: 15)
+//        slogan.font = font
     }
 }
