@@ -15,13 +15,15 @@ import QuickbloxWebRTC
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var slogan: UILabel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+        UIFont.fontNames(forFamilyName: "Karla").forEach({print($0)})
             
-        
+        let font = UIFont(name: "Karla-Regular", size: 15)
+        slogan.font = font
     }
 }
