@@ -10,6 +10,8 @@
 		1F907606A240677521057708 /* Pods_FitLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05218FB288B5373553FAE9D /* Pods_FitLive.framework */; };
 		60318F362481182A00C994D3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60318F352481182A00C994D3 /* Networking.swift */; };
 		60318F382481185600C994D3 /* Networking+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60318F372481185600C994D3 /* Networking+Auth.swift */; };
+		603648042482A3F100BE4990 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 603648032482A3F000BE4990 /* GoogleService-Info.plist */; };
+		603648062482AFC300BE4990 /* Networking+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603648052482AFC300BE4990 /* Networking+Firebase.swift */; };
 		6065E4262481191D0025D4F7 /* Networking+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065E4252481191D0025D4F7 /* Networking+User.swift */; };
 		6065E42B248119C10025D4F7 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065E42A248119C10025D4F7 /* General.swift */; };
 		6065E42E248133950025D4F7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065E42D248133950025D4F7 /* Result.swift */; };
@@ -17,6 +19,10 @@
 		6083600824807C0000BA0CB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083600724807C0000BA0CB5 /* AppDelegate.swift */; };
 		6083600C24807C0000BA0CB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083600B24807C0000BA0CB5 /* ViewController.swift */; };
 		6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */; };
+		60B7A3D62482D7B10057086C /* Networking+VideoChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A3D52482D7B10057086C /* Networking+VideoChatAPI.swift */; };
+		60B7A3D82482E2700057086C /* CurrentUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A3D72482E2700057086C /* CurrentUserManager.swift */; };
+		60C9E2572481EECF008C95C9 /* LiveChatBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9E2562481EECE008C95C9 /* LiveChatBrain.swift */; };
+		60C9E2592481F1CF008C95C9 /* UserDefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9E2582481F1CF008C95C9 /* UserDefaultsProperty.swift */; };
 		C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C162449A2481DAD40057B0D5 /* Assets.xcassets */; };
 		C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D5248208850081FB03 /* Karla-Italic.ttf */; };
 		C17651DA248208850081FB03 /* Karla-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D6248208850081FB03 /* Karla-BoldItalic.ttf */; };
@@ -38,6 +44,8 @@
 		4F84DE1D67ED251EB1577E1A /* Pods-FitLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.release.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.release.xcconfig"; sourceTree = "<group>"; };
 		60318F352481182A00C994D3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		60318F372481185600C994D3 /* Networking+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Auth.swift"; sourceTree = "<group>"; };
+		603648032482A3F000BE4990 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		603648052482AFC300BE4990 /* Networking+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Firebase.swift"; sourceTree = "<group>"; };
 		6065E4252481191D0025D4F7 /* Networking+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+User.swift"; sourceTree = "<group>"; };
 		6065E42A248119C10025D4F7 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		6065E42D248133950025D4F7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		6083600B24807C0000BA0CB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6083601324807C0200BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6083601524807C0200BA0CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60B7A3D52482D7B10057086C /* Networking+VideoChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+VideoChatAPI.swift"; sourceTree = "<group>"; };
+		60B7A3D72482E2700057086C /* CurrentUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserManager.swift; sourceTree = "<group>"; };
+		60C9E2562481EECE008C95C9 /* LiveChatBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatBrain.swift; sourceTree = "<group>"; };
+		60C9E2582481F1CF008C95C9 /* UserDefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProperty.swift; sourceTree = "<group>"; };
 		C162449A2481DAD40057B0D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C17651D5248208850081FB03 /* Karla-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Italic.ttf"; sourceTree = "<group>"; };
 		C17651D6248208850081FB03 /* Karla-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -92,6 +104,8 @@
 				60318F352481182A00C994D3 /* Networking.swift */,
 				60318F372481185600C994D3 /* Networking+Auth.swift */,
 				6065E4252481191D0025D4F7 /* Networking+User.swift */,
+				603648052482AFC300BE4990 /* Networking+Firebase.swift */,
+				60B7A3D52482D7B10057086C /* Networking+VideoChatAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -103,6 +117,7 @@
 				C162449A2481DAD40057B0D5 /* Assets.xcassets */,
 				C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */,
 				6083601524807C0200BA0CB5 /* Info.plist */,
+				603648032482A3F000BE4990 /* GoogleService-Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -113,7 +128,11 @@
 				6065E42C2481338A0025D4F7 /* Extensions */,
 				6065E42A248119C10025D4F7 /* General.swift */,
 				6065E42F24816AF40025D4F7 /* Pins.swift */,
+
 				C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */,
+
+				60C9E2582481F1CF008C95C9 /* UserDefaultsProperty.swift */,
+
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -148,10 +167,16 @@
 			isa = PBXGroup;
 			children = (
 				6083600724807C0000BA0CB5 /* AppDelegate.swift */,
+
 				C1769A13248224A600A71DAE /* Main.storyboard */,
 				C1DCA3F7248252D600EF6696 /* BuddyCell.swift */,
 				C1DCA3F8248252D600EF6696 /* BuddyCell.xib */,
 				C1DCA3F6248251BF00EF6696 /* View Controllers */,
+
+				60C9E2562481EECE008C95C9 /* LiveChatBrain.swift */,
+				
+				60B7A3D72482E2700057086C /* CurrentUserManager.swift */,
+
 				60318F342481180E00C994D3 /* Networking */,
 				C17651D0248207630081FB03 /* Fonts */,
 				6065E4272481196F0025D4F7 /* Helpers */,
@@ -254,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */,
+				603648042482A3F100BE4990 /* GoogleService-Info.plist in Resources */,
 				C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */,
 				C17651DA248208850081FB03 /* Karla-BoldItalic.ttf in Resources */,
 				C1769A14248224A600A71DAE /* Main.storyboard in Resources */,
@@ -320,7 +346,9 @@
 				C1769A1624823B3500A71DAE /* LoginViewController.swift in Sources */,
 				C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */,
 				60318F362481182A00C994D3 /* Networking.swift in Sources */,
+				60B7A3D82482E2700057086C /* CurrentUserManager.swift in Sources */,
 				6065E4262481191D0025D4F7 /* Networking+User.swift in Sources */,
+				60C9E2572481EECF008C95C9 /* LiveChatBrain.swift in Sources */,
 				6083600C24807C0000BA0CB5 /* ViewController.swift in Sources */,
 				C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */,
 				6083600824807C0000BA0CB5 /* AppDelegate.swift in Sources */,
@@ -329,6 +357,9 @@
 				6065E42B248119C10025D4F7 /* General.swift in Sources */,
 				60318F382481185600C994D3 /* Networking+Auth.swift in Sources */,
 				6065E43024816AF40025D4F7 /* Pins.swift in Sources */,
+				603648062482AFC300BE4990 /* Networking+Firebase.swift in Sources */,
+				60B7A3D62482D7B10057086C /* Networking+VideoChatAPI.swift in Sources */,
+				60C9E2592481F1CF008C95C9 /* UserDefaultsProperty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

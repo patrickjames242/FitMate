@@ -11,5 +11,7 @@ use_frameworks!
 target 'FitLive' do
     pod 'QuickBlox', '~> 2.17.4'
     pod 'Quickblox-WebRTC', '~> 2.7.4'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Firestore'
 end
 

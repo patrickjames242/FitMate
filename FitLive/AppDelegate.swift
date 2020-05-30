@@ -9,6 +9,7 @@
 import UIKit
 import Quickblox
 import QuickbloxWebRTC
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,13 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        // okay
+        
+        
         QBSettings.applicationID = 83050
         QBSettings.authKey = "TL9TH-QqDrSFYzQ"
         QBSettings.authSecret = "vtjb22rgZCusHcu"
         QBSettings.accountKey = "mR-Z2RVG3UdyxVGq7MFf"
-        
+        QBRTCConfig.setLogLevel(.errors)
         QBRTCClient.initializeRTC()
+        Networking.VideoChatAPI.setUpVideoCallConnection()
+        
+        
+        
+        FirebaseApp.configure()
+        
+        
         
 
         return true
