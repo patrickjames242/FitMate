@@ -16,9 +16,11 @@ class FitBudyViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(UINib(nibName: "BuddyCell", bundle: nil), forCellReuseIdentifier: "FitBuddyCell")
     }
     
     var buddies: [UserInfo] = [
+        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40),
         UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40)
     ]
   
@@ -32,7 +34,8 @@ extension FitBudyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FitBuddyCell", for: indexPath)
-        cell.textLabel?.text = buddies[indexPath.row].name
+        as! BuddyCell
+        cell.name.text = buddies[indexPath.row].name
         return cell
     }
     
