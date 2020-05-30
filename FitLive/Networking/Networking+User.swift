@@ -9,7 +9,7 @@
 
 extension Networking{
     
-    struct User{
+    struct User: Codable{
         let firebaseID: String
         let quickBoxId: Int
         let quickBloxPassword: String

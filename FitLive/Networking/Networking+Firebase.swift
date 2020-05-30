@@ -212,6 +212,7 @@ extension Networking{
             }
         }
         
+        
         private static func getUserInformation(userID: String, completion: @escaping (CompletionResult<FirebaseUserInfo?>) -> ()){
             usersCollection.document(userID).getDocument { (snapshot, error) in
                 if let data = snapshot?.data(){
@@ -229,6 +230,7 @@ extension Networking{
                 }
             }
         }
+        
         
         private static func parseFirebaseUserInfoFrom(dict: [String: Any]) -> FirebaseUserInfo{
             return FirebaseUserInfo(

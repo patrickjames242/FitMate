@@ -49,6 +49,19 @@ extension Networking{
             QBRequest.logOut(successBlock: nil, errorBlock: nil)
         }
         
+        
+        
+        static func setUpVideoCallConnection(){
+            if let currentUser = CurrentUserManager.currentUser{
+                QBChat.instance.connect(withUserID: currentUser.quickBoxId, password: currentUser.quickBloxPassword) { error in
+                    print(error as Any)
+                }
+            }
+            
+        }
+        
+        
+        
     }
     
     

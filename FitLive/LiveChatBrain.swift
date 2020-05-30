@@ -32,16 +32,16 @@ protocol LiveChatBrainDelegate: class{
 
 
 
-class LiveChatBrain: NSObject{
+class LiveChatBrain{
     
+    static let `default` = LiveChatBrain()
     
     
     // public stuff
     
     weak var delegate: LiveChatBrainDelegate?
     
-    override init(){
-        super.init()
+    private init(){
         QBRTCClient.instance().add(LiveChatBrainQBRTCClientDelegate(brain: self))
     }
     
@@ -69,6 +69,13 @@ class LiveChatBrain: NSObject{
         session?.rejectCall(nil)
     }
     
+    func setUpVideoCallConnection(){
+        if let currentUser = CurrentUserManager.currentUser{
+            QBChat.instance.connect(withUserID: UInt(currentUser.quickBoxId), password: currentUser.quickBloxPassword) { error in
+                print(error as Any)
+            }
+        }
+    }
     
     
     

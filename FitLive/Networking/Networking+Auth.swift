@@ -23,6 +23,7 @@ extension Networking{
         let displayName: String
         let password: String
         let email: String
+        
     }
     
     
@@ -39,11 +40,15 @@ extension Networking{
                         switch videoChatAPIResult{
                         case .success(let videoChatApISuccess):
                             firebaseSignUpSuccess.userResolver(videoChatApISuccess.userID, videoChatPassword, { userResolverResult in
-                                completion(userResolverResult.mapError({
+                                switch userResolverResult{
+                                case .success(let user):
+                                    performOnLogInActions(user: user)
+                                    completion(.success(user))
+                                case .failure(let error):
                                     videoChatApISuccess.cancelSignUp()
                                     firebaseSignUpSuccess.cancelSignUp()
-                                    return $0
-                                }))
+                                    completion(.failure(error))
+                                }
                             })
                         case .failure(let error):
                             firebaseSignUpSuccess.cancelSignUp()
@@ -57,19 +62,17 @@ extension Networking{
         } catch {
             completion(.failure(error))
         }
-        
-        
     }
     
     
     static func logIn(email: String, password: String, completion: @escaping (CompletionResult<User>) -> ()){
-        
         Firebase.logIn(email: email, password: password) { firebaseLogInSuccess in
             switch firebaseLogInSuccess{
             case .success(let firebaseLogInSuccess):
                 VideoChatAPI.logIn(email: email, password: firebaseLogInSuccess.user.quickBloxPassword) { videoChatAPIResult in
                     switch videoChatAPIResult{
                     case .success:
+                        performOnLogInActions(user: firebaseLogInSuccess.user)
                         completion(.success(firebaseLogInSuccess.user))
                     case .failure(let error):
                         firebaseLogInSuccess.cancelLogIn()
@@ -81,6 +84,19 @@ extension Networking{
         }
         
     }
+    
+    static func performOnLogInActions(user: User){
+        CurrentUserManager.notifyThatUserDidLogIn(user: user)
+        LiveChatBrain.default.setUpVideoCallConnection()
+    }
+    
+    
+    static func logOut(){
+        Firebase.logOut()
+        VideoChatAPI.logOut()
+        CurrentUserManager.notifyThatUserDidLogOut()
+    }
+    
     
     
 }
