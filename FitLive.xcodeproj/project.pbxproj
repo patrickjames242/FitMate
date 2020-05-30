@@ -27,6 +27,7 @@
 		C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1769A1724823C4A00A71DAE /* SignUpViewController.swift */; };
 		C17BFE7424825FD2003BC4E2 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */; };
 		C17BFE7624825FEA003BC4E2 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */; };
+		C17BFE782482B66C003BC4E2 /* icons8-end-call-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */; };
 		C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */; };
 		C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */; };
 		C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F7248252D600EF6696 /* BuddyCell.swift */; };
@@ -56,6 +57,7 @@
 		C1769A1724823C4A00A71DAE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
+		C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-end-call-50.png"; sourceTree = "<group>"; };
 		C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBuddy.swift; sourceTree = "<group>"; };
 		C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBudyViewController.swift; sourceTree = "<group>"; };
 		C1DCA3F7248252D600EF6696 /* BuddyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyCell.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */,
 				C162449A2481DAD40057B0D5 /* Assets.xcassets */,
+				C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */,
 				6083601524807C0200BA0CB5 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -257,6 +260,7 @@
 				C17651DC248208850081FB03 /* Karla-Bold.ttf in Resources */,
 				C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */,
 				C1DCA3FA248252D600EF6696 /* BuddyCell.xib in Resources */,
+				C17BFE782482B66C003BC4E2 /* icons8-end-call-50.png in Resources */,
 				C17651DB248208850081FB03 /* Karla-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
