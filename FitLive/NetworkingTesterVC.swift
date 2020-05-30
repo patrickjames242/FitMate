@@ -9,121 +9,95 @@
 import UIKit
 
 
-
-
 import UIKit
 import Quickblox
 import QuickbloxWebRTC
 
-//let currentUserEmail = "patrickjh1998@hotmail.com"
-//let userToCall = 110223515
-
-//let currentUserEmail = "patrickhanna@hotmail.com"
-//let userToCall = 110223451
 
 
-class NetworkingTesterVC: UIViewController {
+protocol LiveChatBrainDelegate: class{
     
-    @UserDefaultsProperty(key: "current_user_email")
-    static var currentUserEmail: String?
+    func someoneIsTryingToCallTheUser()
     
-    @UserDefaultsProperty(key: "user_to_Call")
-    static var userToCall: Int?
+    /// might be called multiple times, like if the call disconnects and reconnects
+    func callConnected()
     
+    func personNeverResponded()
     
-        
-    var session: QBRTCSession?
+    func personDeclinedCall()
+    
+    func personHungUp()
+    
+    func callFailed()
+    
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-//        NetworkingTesterVC.currentUserEmail = "patrickjh1998@hotmail.com"
-//        NetworkingTesterVC.userToCall = 110223515
-        
-//        NetworkingTesterVC.currentUserEmail = "patrickhanna@hotmail.com"
-//        NetworkingTesterVC.userToCall = 110223451
-        
-        
-        
-        QBRTCClient.instance().add(self)
-        let password = "12345678"
-        
-        Networking.logIn(email: NetworkingTesterVC.currentUserEmail!, password: password) { result in
-            switch (result){
-            case .success(let user):
-                QBChat.instance.connect(withUserID: UInt(user.id), password: password) { error in
-                    print("is there an error in QBChat connect?", error as Any)
-                    self.setUpViews()
-                }
-            case .failure: fatalError()
-            }
-        }
+
+
+
+
+class LiveChatBrain: NSObject{
+    
+    
+    
+    // public stuff
+    
+    weak var delegate: LiveChatBrainDelegate?
+    
+    override init(){
+        super.init()
+        QBRTCClient.instance().add(LiveChatBrainQBRTCClientDelegate(brain: self))
     }
     
-    private func setUpViews(){
-        view.backgroundColor = .white
-//        videoView.pinAllSides(addTo: view, pinTo: view)
-        view.addSubview(videoView)
-        videoView.frame = self.view.bounds
-        callButton.pin(addTo: view, .centerX == view.centerXAnchor, .centerY == view.centerYAnchor)
-        
-        
+    
+    var remoteVideoView: UIView{
+        return self._remoteVideoView
     }
     
-    private lazy var callButton: UIButton = {
-        let x = UIButton(type: .system)
-        x.setTitle("START CALL", for: .normal)
-        x.addTarget(self, action: #selector(callButtonPressed), for: .touchUpInside)
-        return x
-    }()
+    var localVideoView: UIView{
+        return self._localVideoView
+    }
     
-    let videoView: QBRTCRemoteVideoView = {
+    func callUser(userId: Int){
+        self.session = QBRTCClient.instance().createNewSession(withOpponents: [userId] as [NSNumber], with: .video)
+        self.session?.startCall(nil)
+    }
+    
+    // accepts any incoming call, if any
+    func acceptCall(){
+        session?.acceptCall(nil)
+    }
+    
+    // rejects any incoming call, if any
+    func rejectCall(){
+        session?.rejectCall(nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    // private stuff
+    
+    
+    private var session: QBRTCSession?
+    
+    
+    private let _remoteVideoView: QBRTCRemoteVideoView = {
         let x = QBRTCRemoteVideoView()
         x.backgroundColor = .red
         x.contentMode = .scaleAspectFit
         return x
     }()
     
-    @objc func callButtonPressed(){
-        let session = QBRTCClient.instance().createNewSession(withOpponents: [NetworkingTesterVC.userToCall!] as [NSNumber], with: .video)
-//        self.session = session
-        session.startCall(nil)
-    }
     
-    private var localVideoPreviewLayer: CALayer?
     
-//    private func updateVideoLayer(){
-//        guard let session = session else {return}
-//        localVideoPreviewLayer?.removeFromSuperlayer()
-//
-//        let videoFormat = QBRTCVideoFormat()
-//
-//        videoFormat.frameRate = 30
-//        videoFormat.pixelFormat = .format420f
-//        videoFormat.width = 640
-//        videoFormat.height = 480
-//
-//        let videoCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
-//
-//        session.localMediaStream.videoTrack.videoCapture = videoCapture
-//
-//        self.videoView.layoutIfNeeded()
-//        let layer = videoCapture.previewLayer
-//        layer.frame = self.videoView.bounds
-//        self.localVideoPreviewLayer = layer
-//
-//        videoCapture.startSession()
-//
-//        self.videoView.layer.insertSublayer(layer, at: 0)
-        
-//    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        self.localVideoPreviewLayer.map{$0.frame = self.videoView.bounds}
-        videoView.frame = view.bounds
-    }
+    private lazy var _localVideoView: UIView = {
+        let x = LocalVideoView(captureSession: self.cameraCapture)
+        return x
+    }()
     
     private let cameraCapture: QBRTCCameraCapture = {
         let videoFormat = QBRTCVideoFormat()
@@ -132,58 +106,149 @@ class NetworkingTesterVC: UIViewController {
         videoFormat.pixelFormat = .format420f
         videoFormat.width = 640
         videoFormat.height = 480
+        let cameraCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
+        cameraCapture.startSession()
         
-        return QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
+        return cameraCapture
     }()
     
+    
+    
+    fileprivate func updateSession(session: QBRTCSession?){
+        self.session = session
+    }
+    
+    fileprivate func updateCameraCaptureOn(session: QBRTCSession){
+        session.localMediaStream.videoTrack.videoCapture = cameraCapture
+    }
+    
+    
+    fileprivate func updateRemoteVideoTrack(track: QBRTCVideoTrack){
+        _remoteVideoView.setVideoTrack(track)
+    }
+    
+    
+    fileprivate func someoneIsTryingToCallTheUser(){
+        delegate?.someoneIsTryingToCallTheUser()
+    }
+    
+    fileprivate func callConnected(){
+        delegate?.callConnected()
+    }
+    
+    fileprivate func personNeverResponded(){
+        delegate?.personNeverResponded()
+    }
+    
+    fileprivate func personDeclinedCall(){
+        delegate?.personDeclinedCall()
+    }
+    
+    fileprivate func personHungUp(){
+        delegate?.personHungUp()
+    }
+    
+    fileprivate func callFailed(){
+        delegate?.callFailed()
+    }
+    
+
 }
 
-
-
-extension NetworkingTesterVC: QBRTCClientDelegate{
+private class LiveChatBrainQBRTCClientDelegate: NSObject, QBRTCClientDelegate{
+    
+    private weak var brain: LiveChatBrain?
+    
+    init(brain: LiveChatBrain){
+        self.brain = brain
+        super.init()
+    }
+    
     
     func session(_ session: QBRTCBaseSession, didChange state: QBRTCConnectionState, forUser userID: NSNumber) {
-//        let _session = session as! QBRTCSession
-//        self.session = _session
-//        updateVideoLayer()
+        
+        let _session = session as! QBRTCSession
+        
         
         if session.localMediaStream.videoTrack.videoCapture == nil{
-            print("did set video capture")
-            session.localMediaStream.videoTrack.videoCapture = self.cameraCapture
-            self.cameraCapture.startSession()
+            brain?.updateCameraCaptureOn(session: _session)
         }
         
         
         
+        switch state{
+        case .unknown, .new, .pending, .connecting, .checking, .connected, .disconnected:
+            brain?.updateSession(session: _session)
+            
+        // signifies that the call failed in some way
+            
+        case .closed, .count, .disconnectTimeout, .noAnswer, .rejected, .hangUp, .failed:
+            brain?.updateSession(session: nil)
+        @unknown default: break
+        }
+        
+        
+        
+        
+        switch state{
+        
+        case .unknown, .new, .pending, .connecting, .checking, .disconnected: break
+        case .connected: self.brain?.callConnected()
+        // signifies that the call failed in some way
+            
+        
+        case .noAnswer: self.brain?.personNeverResponded()
+        case .rejected: self.brain?.personDeclinedCall()
+        case .hangUp: self.brain?.personHungUp()
+        case .closed, .count, .disconnectTimeout, .failed: self.brain?.callFailed()
+            
+        @unknown default: break
+
+        }
+        
     }
     
-    // invoked when someone is calling you
     func didReceiveNewSession(_ session: QBRTCSession, userInfo: [String : String]? = nil) {
-        session.acceptCall(nil)
-        print("someone is calling me", session, userInfo as Any)
+        self.brain?.updateSession(session: session)
+        self.brain?.someoneIsTryingToCallTheUser()
     }
     
-    // invoked when the person you're calling accepts your call
-    func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String : String]? = nil) {
-        print("someone just accepted my call", session, userID, userInfo as Any)
-    }
     
-    // invoked when the person you're calling rejects your call
-    func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String : String]? = nil) {
-        print("someone just rejected my call", session, userID, userInfo as Any)
-    }
-    
-    // invoked if the person you're calling did not respond
-    func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
-        print("no one responded to my call", userID)
-    }
     
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
-        print("receivedRemoteVideoTrack")
-        self.videoView.setVideoTrack(videoTrack)
+        self.brain?.updateRemoteVideoTrack(track: videoTrack)
     }
     
+}
+
+
+
+
+
+
+extension LiveChatBrain{
     
+    fileprivate class LocalVideoView: UIView{
+        
+        private let videoLayer: CALayer
+        
+        init(frame: CGRect = .zero, captureSession: QBRTCCameraCapture){
+            self.videoLayer = captureSession.previewLayer
+            super.init(frame: frame)
+            self.layer.insertSublayer(videoLayer, at: 0)
+        }
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            videoLayer.frame = self.layer.bounds
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init coder has not being implemented")
+        }
+    }
     
 }
+
+
 
