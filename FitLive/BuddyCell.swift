@@ -9,7 +9,12 @@
 import UIKit
 
 class BuddyCell: UITableViewCell {
-
+    @IBOutlet weak var buddySlot: UIView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var fitPoints: UILabel!
+    @IBOutlet weak var profile: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
