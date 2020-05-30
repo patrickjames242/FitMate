@@ -12,13 +12,13 @@ class BuddyCell: UITableViewCell {
     @IBOutlet weak var buddySlot: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var fitPoints: UILabel!
-    @IBOutlet weak var profile: UIImageView!
+    @IBOutlet weak var profilePicture: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-     
+       
     }
   
     override func setSelected(_ selected: Bool, animated: Bool) {
