@@ -21,8 +21,16 @@ class FitBudyViewController: UIViewController {
     
 	
     var buddies: [UserInfo] = [
-        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40),
-        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40)
+        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+        UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0),
+		UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0)
     ]
 	
 }
