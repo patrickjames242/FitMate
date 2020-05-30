@@ -25,6 +25,8 @@
 		C1769A14248224A600A71DAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1769A13248224A600A71DAE /* Main.storyboard */; };
 		C1769A1624823B3500A71DAE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1769A1524823B3500A71DAE /* LoginViewController.swift */; };
 		C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1769A1724823C4A00A71DAE /* SignUpViewController.swift */; };
+		C17BFE7424825FD2003BC4E2 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */; };
+		C17BFE7624825FEA003BC4E2 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */; };
 		C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */; };
 		C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */; };
 		C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F7248252D600EF6696 /* BuddyCell.swift */; };
@@ -52,6 +54,8 @@
 		C1769A13248224A600A71DAE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C1769A1524823B3500A71DAE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C1769A1724823C4A00A71DAE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBuddy.swift; sourceTree = "<group>"; };
 		C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBudyViewController.swift; sourceTree = "<group>"; };
 		C1DCA3F7248252D600EF6696 /* BuddyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyCell.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				6083600B24807C0000BA0CB5 /* ViewController.swift */,
 				C1769A1524823B3500A71DAE /* LoginViewController.swift */,
 				C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */,
+				C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */,
+				C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */,
 				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
 			);
 			path = "View Controllers";
@@ -306,6 +312,7 @@
 			files = (
 				C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */,
 				C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */,
+				C17BFE7424825FD2003BC4E2 /* MyProfileViewController.swift in Sources */,
 				C1769A1624823B3500A71DAE /* LoginViewController.swift in Sources */,
 				C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */,
 				60318F362481182A00C994D3 /* Networking.swift in Sources */,
@@ -313,6 +320,7 @@
 				6083600C24807C0000BA0CB5 /* ViewController.swift in Sources */,
 				C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */,
 				6083600824807C0000BA0CB5 /* AppDelegate.swift in Sources */,
+				C17BFE7624825FEA003BC4E2 /* OtherProfileViewController.swift in Sources */,
 				6065E42E248133950025D4F7 /* Result.swift in Sources */,
 				6065E42B248119C10025D4F7 /* General.swift in Sources */,
 				60318F382481185600C994D3 /* Networking+Auth.swift in Sources */,
