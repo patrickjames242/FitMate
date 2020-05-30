@@ -53,6 +53,9 @@
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="N0u-AR-3lV" kind="show" id="xhb-5X-tHO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </view>
@@ -112,7 +115,7 @@
         <!--Sign Up Page-->
         <scene sceneID="orO-QW-7ie">
             <objects>
-                <viewController id="IM7-wP-djf" userLabel="Sign Up Page" sceneMemberID="viewController">
+                <viewController id="IM7-wP-djf" userLabel="Sign Up Page" customClass="SignUpViewController" customModule="FitLive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tK6-Ff-VRi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,6 +194,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2M-Fo-fIZ">
@@ -224,12 +228,85 @@
             </objects>
             <point key="canvasLocation" x="828.98550724637687" y="464.73214285714283"/>
         </scene>
+        <!--Item 2-->
+        <scene sceneID="kPl-SY-tiK">
+            <objects>
+                <viewController id="12M-ft-9t5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a3D-a0-71Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="f0a-Ip-hzu"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="KCP-Pm-oiJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gi-mV-dNS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2643" y="481"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="hRj-4g-iei">
+            <objects>
+                <viewController id="aCZ-0x-Lix" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0w1-1F-BI1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jio-eB-jIe">
+                                <rect key="frame" x="0.0" y="104" width="414" height="709"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="icons8-search-50" translatesAutoresizingMaskIntoConstraints="NO" id="Sla-Z5-cFd">
+                                <rect key="frame" x="20" y="56" width="34" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="icons8-add-user-male-50" translatesAutoresizingMaskIntoConstraints="NO" id="F1i-l4-Fip">
+                                <rect key="frame" x="359" y="52" width="35" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fitmates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rar-tj-qUv">
+                                <rect key="frame" x="155" y="56" width="105" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hFf-8x-YB0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="cWS-hC-vKB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4u5-aj-HZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2642.0289855072465" y="-168.08035714285714"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="IcE-qR-fXL">
+            <objects>
+                <tabBarController id="RKm-nb-1U0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dbk-M1-96i"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s9L-1U-AqE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aCZ-0x-Lix" kind="relationship" relationship="viewControllers" id="Bwq-oN-Nny"/>
+                        <segue destination="12M-ft-9t5" kind="relationship" relationship="viewControllers" id="N2F-dy-W9E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2NU-ZA-rpD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="156"/>
+        </scene>
         <!--Login Page-->
         <scene sceneID="CEi-yt-Rgb">
             <objects>
                 <viewController id="N0u-AR-3lV" userLabel="Login Page" customClass="LoginViewController" customModule="FitLive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSk-zj-GFe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It's so good to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-WR-wuB">
@@ -272,6 +349,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="RKm-nb-1U0" kind="show" id="9c2-je-wQt"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forgot Password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIZ-pN-108">
                                 <rect key="frame" x="155" y="720" width="104" height="26"/>
@@ -310,6 +390,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="oqj-Zl-FHV"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JOF-cc-GOH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QV4-fY-cCN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,7 +398,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-add-user-male-50" width="50" height="50"/>
         <image name="icons8-left-50" width="50" height="50"/>
+        <image name="icons8-search-50" width="50" height="50"/>
         <image name="newFitMateLogo" width="599" height="474"/>
     </resources>
 </document>
