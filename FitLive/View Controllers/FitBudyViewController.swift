@@ -10,12 +10,12 @@ import UIKit
 
 class FitBudyViewController: UIViewController {
     
-    @IBOutlet weak var fitBuddiesTable: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fitBuddiesTable.dataSource = self
-      
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     var buddies: [UserInfo] = [
@@ -31,10 +31,16 @@ extension FitBudyViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = fitBuddiesTable.dequeueReusableCell(withIdentifier: "FitBuddyCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FitBuddyCell", for: indexPath)
         cell.textLabel?.text = buddies[indexPath.row].name
         return cell
     }
     
     
+}
+
+extension FitBudyViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }

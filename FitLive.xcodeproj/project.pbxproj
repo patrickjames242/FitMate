@@ -27,6 +27,8 @@
 		C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1769A1724823C4A00A71DAE /* SignUpViewController.swift */; };
 		C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */; };
 		C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */; };
+		C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F7248252D600EF6696 /* BuddyCell.swift */; };
+		C1DCA3FA248252D600EF6696 /* BuddyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DCA3F8248252D600EF6696 /* BuddyCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		C1769A1724823C4A00A71DAE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBuddy.swift; sourceTree = "<group>"; };
 		C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBudyViewController.swift; sourceTree = "<group>"; };
+		C1DCA3F7248252D600EF6696 /* BuddyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyCell.swift; sourceTree = "<group>"; };
+		C1DCA3F8248252D600EF6696 /* BuddyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuddyCell.xib; sourceTree = "<group>"; };
 		D05218FB288B5373553FAE9D /* Pods_FitLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE6197963E6A7943F6FBA813 /* Pods-FitLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.debug.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +106,7 @@
 				6065E42C2481338A0025D4F7 /* Extensions */,
 				6065E42A248119C10025D4F7 /* General.swift */,
 				6065E42F24816AF40025D4F7 /* Pins.swift */,
+				C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -136,12 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				6083600724807C0000BA0CB5 /* AppDelegate.swift */,
-				6083600B24807C0000BA0CB5 /* ViewController.swift */,
-				C1769A1524823B3500A71DAE /* LoginViewController.swift */,
-				C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */,
-				C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */,
-				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
 				C1769A13248224A600A71DAE /* Main.storyboard */,
+				C1DCA3F7248252D600EF6696 /* BuddyCell.swift */,
+				C1DCA3F8248252D600EF6696 /* BuddyCell.xib */,
+				C1DCA3F6248251BF00EF6696 /* View Controllers */,
 				60318F342481180E00C994D3 /* Networking */,
 				C17651D0248207630081FB03 /* Fonts */,
 				6065E4272481196F0025D4F7 /* Helpers */,
@@ -168,6 +171,17 @@
 				C17651D7248208850081FB03 /* Karla-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C1DCA3F6248251BF00EF6696 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6083600B24807C0000BA0CB5 /* ViewController.swift */,
+				C1769A1524823B3500A71DAE /* LoginViewController.swift */,
+				C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */,
+				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +250,7 @@
 				C1769A14248224A600A71DAE /* Main.storyboard in Resources */,
 				C17651DC248208850081FB03 /* Karla-Bold.ttf in Resources */,
 				C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */,
+				C1DCA3FA248252D600EF6696 /* BuddyCell.xib in Resources */,
 				C17651DB248208850081FB03 /* Karla-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */,
 				C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */,
 				C1769A1624823B3500A71DAE /* LoginViewController.swift in Sources */,
 				C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */,
