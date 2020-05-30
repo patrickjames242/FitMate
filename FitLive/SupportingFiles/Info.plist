@@ -8,6 +8,8 @@
 	<string>$(EXECUTABLE_NAME)</string>
     <key>NSCameraUsageDescription</key>
     <string>We need your camera in order to allow you to participate in video calls.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We need your microphone in order to allow you to participate in video calls.</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

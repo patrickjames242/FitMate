@@ -23,11 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.authKey = "TL9TH-QqDrSFYzQ"
         QBSettings.authSecret = "vtjb22rgZCusHcu"
         QBSettings.accountKey = "mR-Z2RVG3UdyxVGq7MFf"
+        QBRTCConfig.setLogLevel(.errors)
         
         QBRTCClient.initializeRTC()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateInitialViewController()
+        window?.rootViewController = NetworkingTesterVC()
         window?.makeKeyAndVisible()
         
         return true
