@@ -19,13 +19,14 @@ class FitBudyViewController: UIViewController {
         tableView.register(UINib(nibName: "BuddyCell", bundle: nil), forCellReuseIdentifier: "FitBuddyCell")
     }
     
+	
     var buddies: [UserInfo] = [
         UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40),
         UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 40)
     ]
-  
-
+	
 }
+
 
 extension FitBudyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +42,21 @@ extension FitBudyViewController: UITableViewDataSource {
     
     
 }
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.section == 0 {
+        return UITableView.automaticDimension
+    } else {
+        return 40
+    }
+}
 
+func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.section == 0 {
+        return UITableView.automaticDimension
+    } else {
+        return 40
+    }
+}
 extension FitBudyViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
