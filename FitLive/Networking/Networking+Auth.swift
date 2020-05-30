@@ -19,38 +19,67 @@ extension Networking{
     
     struct SignUpInfo{
         
-        let email: String
+        let username: String
+        let displayName: String
         let password: String
-        
-        init(email: String, password: String) throws {
-            // restricting the length of the password to 8 characters because the QuickBlox api doesn't allow passwords shorter than this
-            let minCharacters = 8
-            guard Array(password).count >= minCharacters else {throw GenericError("Your password must be at least \(minCharacters) characters")}
-            self.email = email
-            self.password = password
-        }
+        let email: String
     }
     
     
     static func signUp(info: SignUpInfo, completion: @escaping (CompletionResult<User>) -> ()){
-        let user = QBUUser()
-        user.login = info.email
-        user.password = info.password
-        QBRequest.signUp(user, successBlock: { (response, user) in
-            let id = Int(user.id)
-            let user = User(id: id, email: info.email)
-            completion(.success(user))
-        }, errorBlock: { completion(.failure($0.error?.error ?? GenericError("An error occured when trying to log in via QBRequest.signUp")))})
+        
+        do{
+            let firebaseInfo = try Firebase.SignUpInfo(username: info.username, displayName: info.displayName, email: info.email, password: info.password)
+            Firebase.signUp(info: firebaseInfo) { firebaseSignUpResult in
+                switch firebaseSignUpResult{
+                case .success(let firebaseSignUpSuccess):
+                    let videoChatPassword = NSUUID().uuidString
+                    let videoChatSignUpInfo = try! VideoChatAPI.SignUpInfo(email: info.email, password: videoChatPassword)
+                    VideoChatAPI.signUp(info: videoChatSignUpInfo) { videoChatAPIResult in
+                        switch videoChatAPIResult{
+                        case .success(let videoChatApISuccess):
+                            firebaseSignUpSuccess.userResolver(videoChatApISuccess.userID, videoChatPassword, { userResolverResult in
+                                completion(userResolverResult.mapError({
+                                    videoChatApISuccess.cancelSignUp()
+                                    firebaseSignUpSuccess.cancelSignUp()
+                                    return $0
+                                }))
+                            })
+                        case .failure(let error):
+                            firebaseSignUpSuccess.cancelSignUp()
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                case .failure(let error): completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+        
+        
     }
     
     
     static func logIn(email: String, password: String, completion: @escaping (CompletionResult<User>) -> ()){
-        QBRequest.logIn(withUserLogin: email, password: password, successBlock: { (response, user) in
-            let id = Int(user.id)
-            let user = User(id: id, email: email)
-            print("The user is logged in so I don't know what these people talking about")
-            completion(.success(user))
-        }, errorBlock: { completion(.failure($0.error?.error ?? GenericError("An error occured when trying to log in via QBRequest.logIn")))})
+        
+        Firebase.logIn(email: email, password: password) { firebaseLogInSuccess in
+            switch firebaseLogInSuccess{
+            case .success(let firebaseLogInSuccess):
+                VideoChatAPI.logIn(email: email, password: firebaseLogInSuccess.user.quickBloxPassword) { videoChatAPIResult in
+                    switch videoChatAPIResult{
+                    case .success:
+                        completion(.success(firebaseLogInSuccess.user))
+                    case .failure(let error):
+                        firebaseLogInSuccess.cancelLogIn()
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error): completion(.failure(error))
+            }
+        }
+        
     }
     
     

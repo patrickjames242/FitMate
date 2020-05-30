@@ -10,12 +10,16 @@
 extension Networking{
     
     struct User{
-        let id: Int // this is given to us by the QuickBlox api to identify a user after they sign up or log in.
-//        let username: String
+        let firebaseID: String
+        let quickBoxId: Int
+        let quickBloxPassword: String
+        let username: String
+        let displayName: String
         let email: String
     }
     
 }
+
 
 
 

@@ -21,13 +21,9 @@ protocol LiveChatBrainDelegate: class{
     
     /// might be called multiple times, like if the call disconnects and reconnects
     func callConnected()
-    
     func personNeverResponded()
-    
     func personDeclinedCall()
-    
     func personHungUp()
-    
     func callFailed()
     
 }
@@ -235,6 +231,7 @@ extension LiveChatBrain{
         init(frame: CGRect = .zero, captureSession: QBRTCCameraCapture){
             self.videoLayer = captureSession.previewLayer
             super.init(frame: frame)
+            self.contentMode = .scaleAspectFit
             self.layer.insertSublayer(videoLayer, at: 0)
         }
         
