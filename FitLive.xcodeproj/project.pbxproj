@@ -19,6 +19,10 @@
 		6083600F24807C0000BA0CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083600D24807C0000BA0CB5 /* Main.storyboard */; };
 		6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */; };
 		C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C162449A2481DAD40057B0D5 /* Assets.xcassets */; };
+		C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D5248208850081FB03 /* Karla-Italic.ttf */; };
+		C17651DA248208850081FB03 /* Karla-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D6248208850081FB03 /* Karla-BoldItalic.ttf */; };
+		C17651DB248208850081FB03 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D7248208850081FB03 /* Karla-Regular.ttf */; };
+		C17651DC248208850081FB03 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17651D8248208850081FB03 /* Karla-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		6083601324807C0200BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6083601524807C0200BA0CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C162449A2481DAD40057B0D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C17651D5248208850081FB03 /* Karla-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Italic.ttf"; sourceTree = "<group>"; };
+		C17651D6248208850081FB03 /* Karla-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C17651D7248208850081FB03 /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
+		C17651D8248208850081FB03 /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
 		D05218FB288B5373553FAE9D /* Pods_FitLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE6197963E6A7943F6FBA813 /* Pods-FitLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.debug.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +131,7 @@
 				6083600B24807C0000BA0CB5 /* ViewController.swift */,
 				6083600D24807C0000BA0CB5 /* Main.storyboard */,
 				60318F342481180E00C994D3 /* Networking */,
+				C17651D0248207630081FB03 /* Fonts */,
 				6065E4272481196F0025D4F7 /* Helpers */,
 				6034FA86248100A20087BD20 /* SupportingFiles */,
 			);
@@ -136,6 +145,17 @@
 				4F84DE1D67ED251EB1577E1A /* Pods-FitLive.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C17651D0248207630081FB03 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C17651D8248208850081FB03 /* Karla-Bold.ttf */,
+				C17651D6248208850081FB03 /* Karla-BoldItalic.ttf */,
+				C17651D5248208850081FB03 /* Karla-Italic.ttf */,
+				C17651D7248208850081FB03 /* Karla-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +220,11 @@
 			files = (
 				6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */,
 				C162449B2481DAD50057B0D5 /* Assets.xcassets in Resources */,
+				C17651DA248208850081FB03 /* Karla-BoldItalic.ttf in Resources */,
+				C17651DC248208850081FB03 /* Karla-Bold.ttf in Resources */,
+				C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */,
 				6083600F24807C0000BA0CB5 /* Main.storyboard in Resources */,
+				C17651DB248208850081FB03 /* Karla-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
