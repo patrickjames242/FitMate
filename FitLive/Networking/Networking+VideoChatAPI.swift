@@ -56,14 +56,7 @@ extension Networking{
         
         
         
-        static func setUpVideoCallConnection(){
-            if let currentUser = CurrentUserManager.currentUser{
-                QBChat.instance.connect(withUserID: UInt(currentUser.quickBoxId), password: currentUser.quickBloxPassword) { error in
-                    print(error as Any)
-                }
-            }
-            
-        }
+        
         
         
         

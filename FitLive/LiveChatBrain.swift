@@ -15,43 +15,49 @@ import QuickbloxWebRTC
 
 
 
-protocol LiveChatBrainDelegate: class{
-    
-    func someoneIsTryingToCallTheUser()
-    
-    /// might be called multiple times, like if the call disconnects and reconnects
-    func callConnected()
-    func personNeverResponded()
-    func personDeclinedCall()
-    func personHungUp()
-    func callFailed()
-    
-}
-
-
-
 
 
 class LiveChatBrain{
     
     static let `default` = LiveChatBrain()
     
+    func initialize(){
+        
+        if let currentUser = CurrentUserManager.currentUser{
+            QBChat.instance.connect(withUserID: UInt(currentUser.quickBoxId), password: currentUser.quickBloxPassword) { error in
+                print(error as Any)
+            }
+        }
+    }
+    
     
     // public stuff
     
-    weak var delegate: LiveChatBrainDelegate?
+    private var remoteVideoViews = [QBRTCRemoteVideoView]()
+    private var localVideoViews = [UIView]()
+    
+    private var sessionDelegate: LiveChatBrainQBRTCClientDelegate?
     
     private init(){
-        QBRTCClient.instance().add(LiveChatBrainQBRTCClientDelegate(brain: self))
+        let sessionDelegate = LiveChatBrainQBRTCClientDelegate(brain: self)
+        QBRTCClient.instance().add(sessionDelegate)
+        self.sessionDelegate = sessionDelegate
+        
     }
     
     
-    var remoteVideoView: UIView{
-        return self._remoteVideoView
+    func getNewRemoteVideoView() -> UIView{
+        let x = QBRTCRemoteVideoView()
+        
+        x.videoGravity = "AVLayerVideoGravityResizeAspect"
+        
+        remoteVideoViews.append(x)
+        return x
     }
     
-    var localVideoView: UIView{
-        return self._localVideoView
+    func getNewLocalVideoView() -> UIView{
+        let x = LocalVideoView(captureSession: self.cameraCapture)
+        return x
     }
     
     func callUser(userId: Int){
@@ -67,6 +73,11 @@ class LiveChatBrain{
     // rejects any incoming call, if any
     func rejectCall(){
         session?.rejectCall(nil)
+    }
+    
+    // hangs up the current calls
+    func hangUp(){
+        session?.hangUp(nil)
     }
     
     func setUpVideoCallConnection(){
@@ -88,27 +99,15 @@ class LiveChatBrain{
     private var session: QBRTCSession?
     
     
-    private let _remoteVideoView: QBRTCRemoteVideoView = {
-        let x = QBRTCRemoteVideoView()
-        x.backgroundColor = .red
-        x.contentMode = .scaleAspectFit
-        return x
-    }()
     
-    
-    
-    private lazy var _localVideoView: UIView = {
-        let x = LocalVideoView(captureSession: self.cameraCapture)
-        return x
-    }()
     
     private let cameraCapture: QBRTCCameraCapture = {
         let videoFormat = QBRTCVideoFormat()
         
         videoFormat.frameRate = 30
         videoFormat.pixelFormat = .format420f
-        videoFormat.width = 640
-        videoFormat.height = 480
+        videoFormat.width = 800
+        videoFormat.height = 600
         let cameraCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
         cameraCapture.startSession()
         
@@ -127,32 +126,40 @@ class LiveChatBrain{
     
     
     fileprivate func updateRemoteVideoTrack(track: QBRTCVideoTrack){
-        _remoteVideoView.setVideoTrack(track)
+        remoteVideoViews.forEach{$0.setVideoTrack(track)}
     }
+    
+    let someoneIsTryingToCallTheUserNotification = CustomNotification<()>()
+    let callConnectedNotification = CustomNotification<()>()
+    let personNeverRespondedNotification = CustomNotification<()>()
+    let personDeclinedCallNotification = CustomNotification<()>()
+    let personHungUpNotification = CustomNotification<()>()
+    let callFailedNotification = CustomNotification<()>()
     
     
     fileprivate func someoneIsTryingToCallTheUser(){
-        delegate?.someoneIsTryingToCallTheUser()
+
+        someoneIsTryingToCallTheUserNotification.post()
     }
     
     fileprivate func callConnected(){
-        delegate?.callConnected()
+        callConnectedNotification.post()
     }
     
     fileprivate func personNeverResponded(){
-        delegate?.personNeverResponded()
+        personNeverRespondedNotification.post()
     }
     
     fileprivate func personDeclinedCall(){
-        delegate?.personDeclinedCall()
+        personDeclinedCallNotification.post()
     }
     
     fileprivate func personHungUp(){
-        delegate?.personHungUp()
+        personHungUpNotification.post()
     }
     
     fileprivate func callFailed(){
-        delegate?.callFailed()
+        callFailedNotification.post()
     }
     
 
@@ -218,6 +225,10 @@ private class LiveChatBrainQBRTCClientDelegate: NSObject, QBRTCClientDelegate{
     
     
     
+    
+    
+    
+    
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
         self.brain?.updateRemoteVideoTrack(track: videoTrack)
     }
@@ -236,14 +247,16 @@ extension LiveChatBrain{
         private let videoLayer: CALayer
         
         init(frame: CGRect = .zero, captureSession: QBRTCCameraCapture){
+            captureSession.previewLayer.videoGravity = .resizeAspectFill
             self.videoLayer = captureSession.previewLayer
             super.init(frame: frame)
-            self.contentMode = .scaleAspectFit
+            self.contentMode = .scaleAspectFill
             self.layer.insertSublayer(videoLayer, at: 0)
         }
         
         override func layoutSubviews() {
             super.layoutSubviews()
+            
             videoLayer.frame = self.layer.bounds
         }
         

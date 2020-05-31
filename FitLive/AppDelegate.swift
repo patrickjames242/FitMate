@@ -28,8 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.accountKey = "mR-Z2RVG3UdyxVGq7MFf"
         QBRTCConfig.setLogLevel(.errors)
         QBRTCClient.initializeRTC()
-        Networking.VideoChatAPI.setUpVideoCallConnection()
         FirebaseApp.configure()
+        LiveChatBrain.default.initialize()
+        
 
         return true
     }

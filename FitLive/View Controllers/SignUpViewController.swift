@@ -119,11 +119,6 @@ class SignUpViewController: UIViewController {
         return x
     }()
     
-    
-    
-    
-    
-    
 }
 
 

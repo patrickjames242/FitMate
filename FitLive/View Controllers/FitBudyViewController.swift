@@ -37,6 +37,7 @@ class FitBudyViewController: UIViewController {
 		tableView.rowHeight = 120
 		
 		setUpUsersObserver()
+		setUpCallingObserver()
     }
 	
 	private func setUpUsersObserver(){
@@ -47,8 +48,43 @@ class FitBudyViewController: UIViewController {
 				listener?.remove()
 				return
 			}
-			self.buddies = newUsers
+			self.buddies = newUsers.filter({$0.firebaseID != CurrentUserManager.currentUser?.firebaseID})
 			self.tableView.reloadData()
+		}
+	}
+	
+	
+	
+	private func setUpCallingObserver(){
+		
+		func topMostViewController(on vc: UIViewController) -> UIViewController{
+			if let parent = vc.presentedViewController{
+				return topMostViewController(on: parent)
+			} else {
+				return vc
+			}
+		}
+		
+		LiveChatBrain.default.someoneIsTryingToCallTheUserNotification.listen(sender: self) {[weak self] in
+			guard let self = self else {return}
+			let presenter = topMostViewController(on: self)
+			
+			let alert = UIAlertController(title: "Incoming Call", message: "Someone is trying to call you", preferredStyle: .alert)
+			let decline = UIAlertAction(title: "Decline", style: .destructive) { _ in
+				LiveChatBrain.default.rejectCall()
+			}
+			
+			let accept = UIAlertAction(title: "Accept", style: .default) { action in
+				LiveChatBrain.default.acceptCall()
+				self.present(VideoChatViewController(personBeingCalled: nil), animated: true)
+			}
+			
+			[decline, accept].forEach{alert.addAction($0)}
+			
+			
+			presenter.present(alert, animated: true)
+			
+			
 		}
 	}
 	
@@ -58,8 +94,9 @@ class FitBudyViewController: UIViewController {
 
 extension FitBudyViewController: BuddyTableViewCellDelegate{
 	
-	func userWantsToCallPerson() {
-		let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "VideoCallVC")
+	func userWantsToCallPerson(person: Networking.User) {
+		LiveChatBrain.default.callUser(userId: person.quickBoxId)
+		let viewController = VideoChatViewController(personBeingCalled: person)
 		self.present(viewController, animated: true)
 	}
 
@@ -75,7 +112,7 @@ extension FitBudyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BuddyTableViewCell
 		let item = buddies[indexPath.row]
-		cell.updateWith(name: item.displayName, username: item.username)
+		cell.updateWith(user: item)
 		cell.delegate = self
         return cell
     }
@@ -85,16 +122,14 @@ extension FitBudyViewController: UITableViewDataSource {
 
 
 extension FitBudyViewController: UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
+
 }
 
 
 
 
 protocol BuddyTableViewCellDelegate: class{
-	func userWantsToCallPerson()
+	func userWantsToCallPerson(person: Networking.User)
 }
 
 
@@ -111,9 +146,12 @@ private class BuddyTableViewCell: UITableViewCell{
 		
 	}
 	
-	func updateWith(name: String, username: String){
-		self.nameLabel.text = name
-		self.usernameLabel.text = "@" + username
+	private var currentUser: Networking.User?
+	
+	func updateWith(user: Networking.User){
+		self.currentUser = user
+		self.nameLabel.text = user.displayName
+		self.usernameLabel.text = "@" + user.username
 	}
 	
 	private lazy var stackViewHolder: UIView = {
@@ -185,7 +223,8 @@ private class BuddyTableViewCell: UITableViewCell{
 	}()
 	
 	@objc private func respondToWorkOutNowButtonPressed(){
-		delegate?.userWantsToCallPerson()
+		guard let user = self.currentUser else {return}
+		delegate?.userWantsToCallPerson(person: user)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

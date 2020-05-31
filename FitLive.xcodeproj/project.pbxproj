@@ -18,6 +18,9 @@
 		6065E43024816AF40025D4F7 /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065E42F24816AF40025D4F7 /* Pins.swift */; };
 		6083600824807C0000BA0CB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083600724807C0000BA0CB5 /* AppDelegate.swift */; };
 		6083601424807C0200BA0CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083601224807C0200BA0CB5 /* LaunchScreen.storyboard */; };
+		608769A02483F5FC00377848 /* VideoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6087699F2483F5FC00377848 /* VideoChatViewController.swift */; };
+		608769A224840A6100377848 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608769A124840A6100377848 /* Notification.swift */; };
+		608769A524840A9600377848 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608769A424840A9600377848 /* WeakWrapper.swift */; };
 		60B7A3D62482D7B10057086C /* Networking+VideoChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A3D52482D7B10057086C /* Networking+VideoChatAPI.swift */; };
 		60B7A3D82482E2700057086C /* CurrentUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A3D72482E2700057086C /* CurrentUserManager.swift */; };
 		60B7A3DA248308250057086C /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A3D9248308250057086C /* LandingPage.swift */; };
@@ -51,6 +54,9 @@
 		6083600724807C0000BA0CB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6083601324807C0200BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6083601524807C0200BA0CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6087699F2483F5FC00377848 /* VideoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatViewController.swift; sourceTree = "<group>"; };
+		608769A124840A6100377848 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		608769A424840A9600377848 /* WeakWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 		60B7A3D52482D7B10057086C /* Networking+VideoChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+VideoChatAPI.swift"; sourceTree = "<group>"; };
 		60B7A3D72482E2700057086C /* CurrentUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserManager.swift; sourceTree = "<group>"; };
 		60B7A3D9248308250057086C /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 				6065E42A248119C10025D4F7 /* General.swift */,
 				6065E42F24816AF40025D4F7 /* Pins.swift */,
 				60C9E2582481F1CF008C95C9 /* UserDefaultsProperty.swift */,
+				608769A124840A6100377848 /* Notification.swift */,
+				608769A424840A9600377848 /* WeakWrapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
 				C1769A1524823B3500A71DAE /* LoginViewController.swift */,
 				C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */,
+				6087699F2483F5FC00377848 /* VideoChatViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 				60B7A3DA248308250057086C /* LandingPage.swift in Sources */,
 				60B7A3DC24830B120057086C /* Fonts.swift in Sources */,
 				60B7A3D82482E2700057086C /* CurrentUserManager.swift in Sources */,
+				608769A524840A9600377848 /* WeakWrapper.swift in Sources */,
 				6065E4262481191D0025D4F7 /* Networking+User.swift in Sources */,
 				60C9E2572481EECF008C95C9 /* LiveChatBrain.swift in Sources */,
 				C1769A1824823C4A00A71DAE /* SignUpViewController.swift in Sources */,
@@ -339,6 +349,8 @@
 				60318F382481185600C994D3 /* Networking+Auth.swift in Sources */,
 				6065E43024816AF40025D4F7 /* Pins.swift in Sources */,
 				603648062482AFC300BE4990 /* Networking+Firebase.swift in Sources */,
+				608769A224840A6100377848 /* Notification.swift in Sources */,
+				608769A02483F5FC00377848 /* VideoChatViewController.swift in Sources */,
 				60B7A3D62482D7B10057086C /* Networking+VideoChatAPI.swift in Sources */,
 				60C9E2592481F1CF008C95C9 /* UserDefaultsProperty.swift in Sources */,
 			);
@@ -478,7 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N44KF5BXBU;
 				INFOPLIST_FILE = "$(SRCROOT)/FitLive/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N44KF5BXBU;
 				INFOPLIST_FILE = "$(SRCROOT)/FitLive/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
