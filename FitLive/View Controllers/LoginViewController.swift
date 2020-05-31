@@ -92,8 +92,19 @@ class LoginViewController: UIViewController {
     }()
     
     @objc private func respondToLogInButtonPressed(){
-        let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "FitBuddiesVC")
-        self.present(vc, animated: true)
+        logInButton.isUserInteractionEnabled = false
+        Networking.logIn(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") { result in
+            self.logInButton.isUserInteractionEnabled = true
+            switch result{
+            case .success:
+                self.present(FitBudyViewController.getNew(), animated: true)
+            case .failure(let error):
+                self.displayErrorMessage(message: error.localizedDescription)
+                
+            }
+        }
+        
+        
     }
     
     private lazy var logoView: UIImageView = {
