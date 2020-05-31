@@ -38,8 +38,6 @@
 		C17BFE782482B66C003BC4E2 /* icons8-end-call-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */; };
 		C1DCA3F3248247EC00EF6696 /* FitBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */; };
 		C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */; };
-		C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCA3F7248252D600EF6696 /* BuddyCell.swift */; };
-		C1DCA3FA248252D600EF6696 /* BuddyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DCA3F8248252D600EF6696 /* BuddyCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +50,7 @@
 		6065E42A248119C10025D4F7 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		6065E42D248133950025D4F7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		6065E42F24816AF40025D4F7 /* Pins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
-		6083600424807C0000BA0CB5 /* FitLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6083600424807C0000BA0CB5 /* Fit Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6083600724807C0000BA0CB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6083601324807C0200BA0CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6083601524807C0200BA0CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +74,6 @@
 		C17BFE772482B66B003BC4E2 /* icons8-end-call-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-end-call-50.png"; sourceTree = "<group>"; };
 		C1DCA3F2248247EC00EF6696 /* FitBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBuddy.swift; sourceTree = "<group>"; };
 		C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitBudyViewController.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
-		C1DCA3F7248252D600EF6696 /* BuddyCell.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = BuddyCell.swift; sourceTree = "<group>"; tabWidth = 7; };
-		C1DCA3F8248252D600EF6696 /* BuddyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuddyCell.xib; sourceTree = "<group>"; };
 		D05218FB288B5373553FAE9D /* Pods_FitLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE6197963E6A7943F6FBA813 /* Pods-FitLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.debug.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +156,7 @@
 		6083600524807C0000BA0CB5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6083600424807C0000BA0CB5 /* FitLive.app */,
+				6083600424807C0000BA0CB5 /* Fit Mate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,8 +166,6 @@
 			children = (
 				6083600724807C0000BA0CB5 /* AppDelegate.swift */,
 				C1769A13248224A600A71DAE /* Main.storyboard */,
-				C1DCA3F7248252D600EF6696 /* BuddyCell.swift */,
-				C1DCA3F8248252D600EF6696 /* BuddyCell.xib */,
 				C1DCA3F6248251BF00EF6696 /* View Controllers */,
 				60C9E2562481EECE008C95C9 /* LiveChatBrain.swift */,
 				60B7A3D72482E2700057086C /* CurrentUserManager.swift */,
@@ -236,7 +230,7 @@
 			);
 			name = FitLive;
 			productName = FitLive;
-			productReference = 6083600424807C0000BA0CB5 /* FitLive.app */;
+			productReference = 6083600424807C0000BA0CB5 /* Fit Mate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +278,6 @@
 				C1769A14248224A600A71DAE /* Main.storyboard in Resources */,
 				C17651DC248208850081FB03 /* Karla-Bold.ttf in Resources */,
 				C17651D9248208850081FB03 /* Karla-Italic.ttf in Resources */,
-				C1DCA3FA248252D600EF6696 /* BuddyCell.xib in Resources */,
 				C17BFE782482B66C003BC4E2 /* icons8-end-call-50.png in Resources */,
 				C17651DB248208850081FB03 /* Karla-Regular.ttf in Resources */,
 			);
@@ -339,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1DCA3F9248252D600EF6696 /* BuddyCell.swift in Sources */,
 				60B7A3DE24830FC00057086C /* Colors.swift in Sources */,
 				C1DCA3F5248248BA00EF6696 /* FitBudyViewController.swift in Sources */,
 				C17BFE7424825FD2003BC4E2 /* MyProfileViewController.swift in Sources */,
@@ -505,7 +497,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.patrick.livestream-test.FitLive";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Fit Mate";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -524,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.patrick.livestream-test.FitLive";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Fit Mate";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FitLive.xcodeproj">
+      location = "group:/Users/patrickhanna/Desktop/FitLive/FitLive.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
