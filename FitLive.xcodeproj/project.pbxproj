@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F907606A240677521057708 /* Pods_FitLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05218FB288B5373553FAE9D /* Pods_FitLive.framework */; };
+		60217B902484470A00EAE01D /* WorkoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60217B8F2484470A00EAE01D /* WorkoutsModel.swift */; };
+		60217B9224844DA000EAE01D /* WorkoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60217B9124844DA000EAE01D /* WorkoutTimer.swift */; };
 		60318F362481182A00C994D3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60318F352481182A00C994D3 /* Networking.swift */; };
 		60318F382481185600C994D3 /* Networking+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60318F372481185600C994D3 /* Networking+Auth.swift */; };
 		603648042482A3F100BE4990 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 603648032482A3F000BE4990 /* GoogleService-Info.plist */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		4F84DE1D67ED251EB1577E1A /* Pods-FitLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitLive.release.xcconfig"; path = "Target Support Files/Pods-FitLive/Pods-FitLive.release.xcconfig"; sourceTree = "<group>"; };
+		60217B8F2484470A00EAE01D /* WorkoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsModel.swift; sourceTree = "<group>"; };
+		60217B9124844DA000EAE01D /* WorkoutTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimer.swift; sourceTree = "<group>"; };
 		60318F352481182A00C994D3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		60318F372481185600C994D3 /* Networking+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Auth.swift"; sourceTree = "<group>"; };
 		603648032482A3F000BE4990 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				6083600724807C0000BA0CB5 /* AppDelegate.swift */,
 				C1769A13248224A600A71DAE /* Main.storyboard */,
+				60217B8F2484470A00EAE01D /* WorkoutsModel.swift */,
 				C1DCA3F6248251BF00EF6696 /* View Controllers */,
 				60C9E2562481EECE008C95C9 /* LiveChatBrain.swift */,
 				60B7A3D72482E2700057086C /* CurrentUserManager.swift */,
@@ -174,6 +179,7 @@
 				C17651D0248207630081FB03 /* Fonts */,
 				6065E4272481196F0025D4F7 /* Helpers */,
 				6034FA86248100A20087BD20 /* SupportingFiles */,
+				60217B9124844DA000EAE01D /* WorkoutTimer.swift */,
 			);
 			path = FitLive;
 			sourceTree = "<group>";
@@ -351,8 +357,10 @@
 				603648062482AFC300BE4990 /* Networking+Firebase.swift in Sources */,
 				608769A224840A6100377848 /* Notification.swift in Sources */,
 				608769A02483F5FC00377848 /* VideoChatViewController.swift in Sources */,
+				60217B902484470A00EAE01D /* WorkoutsModel.swift in Sources */,
 				60B7A3D62482D7B10057086C /* Networking+VideoChatAPI.swift in Sources */,
 				60C9E2592481F1CF008C95C9 /* UserDefaultsProperty.swift in Sources */,
+				60217B9224844DA000EAE01D /* WorkoutTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

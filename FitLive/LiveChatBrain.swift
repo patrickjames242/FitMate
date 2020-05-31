@@ -6,6 +6,7 @@
 //  Copyright © 2020 Patrick Hanna. All rights reserved.
 //
 
+
 import UIKit
 
 
@@ -14,7 +15,8 @@ import Quickblox
 import QuickbloxWebRTC
 
 
-
+private let WORKOUT_ID_KEY = "workoutID"
+private let NAME_KEY = "callerName"
 
 
 class LiveChatBrain{
@@ -33,8 +35,7 @@ class LiveChatBrain{
     
     // public stuff
     
-    private var remoteVideoViews = [QBRTCRemoteVideoView]()
-    private var localVideoViews = [UIView]()
+    private var remoteVideoViews = [WeakWrapper<QBRTCRemoteVideoView>]()
     
     private var sessionDelegate: LiveChatBrainQBRTCClientDelegate?
     
@@ -42,16 +43,14 @@ class LiveChatBrain{
         let sessionDelegate = LiveChatBrainQBRTCClientDelegate(brain: self)
         QBRTCClient.instance().add(sessionDelegate)
         self.sessionDelegate = sessionDelegate
-        
     }
     
     
     func getNewRemoteVideoView() -> UIView{
         let x = QBRTCRemoteVideoView()
-        
+
         x.videoGravity = "AVLayerVideoGravityResizeAspect"
-        
-        remoteVideoViews.append(x)
+        remoteVideoViews.append(WeakWrapper(x))
         return x
     }
     
@@ -60,9 +59,14 @@ class LiveChatBrain{
         return x
     }
     
-    func callUser(userId: Int){
+    func callUser(userId: Int, workout: Workout){
         self.session = QBRTCClient.instance().createNewSession(withOpponents: [userId] as [NSNumber], with: .video)
-        self.session?.startCall(nil)
+        
+        var userInfoDict = [WORKOUT_ID_KEY: String(workout.id)]
+        if let name = CurrentUserManager.currentUser?.displayName{
+            userInfoDict[NAME_KEY] = name
+        }
+        self.session?.startCall(userInfoDict)
     }
     
     // accepts any incoming call, if any
@@ -89,6 +93,12 @@ class LiveChatBrain{
     }
     
     
+    let someoneIsTryingToCallTheUserNotification = CustomNotification<(workout: Workout?, callerDisplayName: String?)>()
+    let callConnectedNotification = CustomNotification<()>()
+    let personNeverRespondedNotification = CustomNotification<()>()
+    let personDeclinedCallNotification = CustomNotification<()>()
+    let personHungUpNotification = CustomNotification<()>()
+    let callFailedNotification = CustomNotification<()>()
     
     
     
@@ -126,20 +136,14 @@ class LiveChatBrain{
     
     
     fileprivate func updateRemoteVideoTrack(track: QBRTCVideoTrack){
-        remoteVideoViews.forEach{$0.setVideoTrack(track)}
+        remoteVideoViews.forEach{$0.value?.setVideoTrack(track)}
     }
     
-    let someoneIsTryingToCallTheUserNotification = CustomNotification<()>()
-    let callConnectedNotification = CustomNotification<()>()
-    let personNeverRespondedNotification = CustomNotification<()>()
-    let personDeclinedCallNotification = CustomNotification<()>()
-    let personHungUpNotification = CustomNotification<()>()
-    let callFailedNotification = CustomNotification<()>()
     
     
-    fileprivate func someoneIsTryingToCallTheUser(){
-
-        someoneIsTryingToCallTheUserNotification.post()
+    
+    fileprivate func someoneIsTryingToCallTheUser(workout: Workout?, callerDisplayName: String?){
+        someoneIsTryingToCallTheUserNotification.post(with: (workout, callerDisplayName))
     }
     
     fileprivate func callConnected(){
@@ -218,13 +222,14 @@ private class LiveChatBrainQBRTCClientDelegate: NSObject, QBRTCClientDelegate{
         
     }
     
+    
     func didReceiveNewSession(_ session: QBRTCSession, userInfo: [String : String]? = nil) {
         self.brain?.updateSession(session: session)
-        self.brain?.someoneIsTryingToCallTheUser()
+        let workoutID = userInfo?[WORKOUT_ID_KEY].flatMap{Int($0)}
+        let workout = Workout.getAll().first(where: {$0.id == workoutID})
+        let callerName = userInfo?[NAME_KEY]
+        self.brain?.someoneIsTryingToCallTheUser(workout: workout, callerDisplayName: callerName)
     }
-    
-    
-    
     
     
     

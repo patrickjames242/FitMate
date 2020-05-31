@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         LiveChatBrain.default.initialize()
         
+        
 
         return true
     }

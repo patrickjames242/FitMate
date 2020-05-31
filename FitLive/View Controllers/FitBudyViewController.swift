@@ -65,18 +65,20 @@ class FitBudyViewController: UIViewController {
 			}
 		}
 		
-		LiveChatBrain.default.someoneIsTryingToCallTheUserNotification.listen(sender: self) {[weak self] in
+		LiveChatBrain.default.someoneIsTryingToCallTheUserNotification.listen(sender: self) {[weak self] info in
 			guard let self = self else {return}
 			let presenter = topMostViewController(on: self)
 			
-			let alert = UIAlertController(title: "Incoming Call", message: "Someone is trying to call you", preferredStyle: .alert)
+			let alertMessage = (info.callerDisplayName ?? "Someone") + " wants to work out with you!"
+			
+			let alert = UIAlertController(title: "Incoming Call", message: alertMessage, preferredStyle: .alert)
 			let decline = UIAlertAction(title: "Decline", style: .destructive) { _ in
 				LiveChatBrain.default.rejectCall()
 			}
 			
 			let accept = UIAlertAction(title: "Accept", style: .default) { action in
 				LiveChatBrain.default.acceptCall()
-				self.present(VideoChatViewController(personBeingCalled: nil), animated: true)
+				self.present(VideoChatViewController(otherCallerName: info.callerDisplayName, workout: info.workout ?? Workout.getAll().randomElement()!), animated: true)
 			}
 			
 			[decline, accept].forEach{alert.addAction($0)}
@@ -95,8 +97,9 @@ class FitBudyViewController: UIViewController {
 extension FitBudyViewController: BuddyTableViewCellDelegate{
 	
 	func userWantsToCallPerson(person: Networking.User) {
-		LiveChatBrain.default.callUser(userId: person.quickBoxId)
-		let viewController = VideoChatViewController(personBeingCalled: person)
+		let workout = Workout.getAll().randomElement()!
+		LiveChatBrain.default.callUser(userId: person.quickBoxId, workout: workout)
+		let viewController = VideoChatViewController(otherCallerName: person.displayName, workout: workout)
 		self.present(viewController, animated: true)
 	}
 
@@ -173,14 +176,25 @@ private class BuddyTableViewCell: UITableViewCell{
 		return x
 	}()
 
-	private lazy var customImageView: UIImageView = {
-		let x = UIImageView(image: UIImage(named: "_96A3290")!)
-		x.contentMode = .scaleAspectFill
-		let size: CGFloat = 63
-		x.pin(.height == 63, .width == 63)
-		x.layer.cornerRadius = size / 2
-		x.layer.masksToBounds = true
-		return x
+	private lazy var customImageView: UIView = {
+		
+		let holderView = UIView()
+		let grayVal: CGFloat = 225.0/255.0
+		holderView.backgroundColor = UIColor(red: grayVal, green: grayVal, blue: grayVal, alpha: grayVal)
+
+		
+		let holderViewSize: CGFloat = 63
+		holderView.pin(.height == holderViewSize, .width == holderViewSize)
+		holderView.layer.cornerRadius = holderViewSize / 2
+		holderView.layer.masksToBounds = true
+		
+		
+		let profileImageView = UIImageView(image: UIImage(named: "profileImageIcon")!)
+		profileImageView.contentMode = .scaleAspectFit
+		let imageSize: CGFloat = 35
+		profileImageView.pin(addTo: holderView, .centerX == holderView.centerXAnchor, .centerY == holderView.centerYAnchor, .width == imageSize, .height == imageSize)
+		
+		return holderView
 	}()
 	
 	private lazy var labelStackView: UIStackView = {
