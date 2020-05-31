@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCq-CM-C9H">
-                                        <rect key="frame" x="261" y="118" width="137" height="198"/>
+                                        <rect key="frame" x="242" y="118" width="156" height="233"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="icons8-video-call-50" translatesAutoresizingMaskIntoConstraints="NO" id="076-O9-Ekv">
@@ -31,51 +31,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="u2z-MV-VKb">
-                                        <rect key="frame" x="62.5" y="526" width="289" height="328"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAd-UC-sr4">
-                                                <rect key="frame" x="113" y="0.0" width="63" height="36"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VsT-QM-Z0b">
-                                                <rect key="frame" x="47" y="58" width="195" height="2"/>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q5D-vW-sm4">
-                                                <rect key="frame" x="22.5" y="82" width="244.5" height="72"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="60"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="LGa-fj-mGU">
-                                                <rect key="frame" x="120.5" y="176" width="48.5" height="28"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-end-call-50" translatesAutoresizingMaskIntoConstraints="NO" id="Dst-PW-bgS">
-                                                <rect key="frame" x="119.5" y="226" width="50" height="50"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HG-Yn-7MR">
-                                                <rect key="frame" x="129.5" y="298" width="30" height="30"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:51" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zc-e7-rj5">
+                                        <rect key="frame" x="193" y="87" width="33.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="u2z-MV-VKb" firstAttribute="bottom" secondItem="UyR-mn-4H4" secondAttribute="bottomMargin" id="B4t-dO-u9D"/>
                                     <constraint firstItem="UuD-vH-zEJ" firstAttribute="leading" secondItem="UyR-mn-4H4" secondAttribute="leading" constant="178" id="CSQ-we-pue"/>
                                     <constraint firstItem="PCq-CM-C9H" firstAttribute="top" secondItem="UyR-mn-4H4" secondAttribute="top" constant="118" id="Ghy-nz-Mbh"/>
-                                    <constraint firstItem="u2z-MV-VKb" firstAttribute="centerX" secondItem="UyR-mn-4H4" secondAttribute="centerX" id="ISb-Nr-a4e"/>
-                                    <constraint firstAttribute="trailing" secondItem="u2z-MV-VKb" secondAttribute="trailing" constant="62.5" id="JJD-bL-8lV"/>
                                     <constraint firstItem="076-O9-Ekv" firstAttribute="top" secondItem="UyR-mn-4H4" secondAttribute="top" constant="52" id="JTa-vR-wGL"/>
-                                    <constraint firstItem="PCq-CM-C9H" firstAttribute="height" secondItem="UyR-mn-4H4" secondAttribute="height" multiplier="0.220982" id="MeP-pg-oz5"/>
                                     <constraint firstItem="UuD-vH-zEJ" firstAttribute="top" secondItem="UyR-mn-4H4" secondAttribute="top" constant="52" id="TS9-fq-m6e"/>
-                                    <constraint firstItem="PCq-CM-C9H" firstAttribute="leading" secondItem="UyR-mn-4H4" secondAttribute="leading" constant="261" id="hXw-lB-JcO"/>
+                                    <constraint firstItem="3zc-e7-rj5" firstAttribute="leading" secondItem="UyR-mn-4H4" secondAttribute="leading" constant="193" id="W4M-f5-Q9n"/>
+                                    <constraint firstItem="PCq-CM-C9H" firstAttribute="leading" secondItem="UyR-mn-4H4" secondAttribute="leading" constant="242" id="hXw-lB-JcO"/>
+                                    <constraint firstItem="3zc-e7-rj5" firstAttribute="top" secondItem="UuD-vH-zEJ" secondAttribute="bottom" constant="8" id="jJB-ht-y3d"/>
                                     <constraint firstAttribute="trailing" secondItem="PCq-CM-C9H" secondAttribute="trailing" constant="16" id="rNa-Iz-Zbi"/>
+                                    <constraint firstAttribute="bottom" secondItem="PCq-CM-C9H" secondAttribute="bottom" constant="545" id="rxb-Ln-LD5"/>
                                     <constraint firstAttribute="trailing" secondItem="076-O9-Ekv" secondAttribute="trailing" constant="16" id="woE-RQ-mSZ"/>
                                 </constraints>
                             </view>
@@ -92,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSc-eF-v8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4211.594202898551" y="158.70535714285714"/>
+            <point key="canvasLocation" x="4210.144927536232" y="157.33695652173915"/>
         </scene>
         <!--BuddiesVC-->
         <scene sceneID="hRj-4g-iei">
@@ -139,7 +112,6 @@
     </scenes>
     <resources>
         <image name="icons8-add-user-male-50" width="50" height="50"/>
-        <image name="icons8-end-call-50" width="50" height="50"/>
         <image name="icons8-search-50" width="50" height="50"/>
         <image name="icons8-video-call-50" width="50" height="50"/>
     </resources>
