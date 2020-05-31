@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  FitLive
@@ -5,6 +6,7 @@
 //  Created by Patrick Hanna on 5/28/20.
 //  Copyright © 2020 Patrick Hanna. All rights reserved.
 //
+
 
 import UIKit
 import Quickblox
@@ -28,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBRTCClient.initializeRTC()
         Networking.VideoChatAPI.setUpVideoCallConnection()
         FirebaseApp.configure()
-    
+
         return true
     }
 
@@ -36,13 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LandingPage()
+        window?.rootViewController = CurrentUserManager.currentUser == nil ? LandingPage() : FitBudyViewController.getNew()
         window?.makeKeyAndVisible()
 
         return true
     }
 
-
+    
 
 
 }
