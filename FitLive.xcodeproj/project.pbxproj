@@ -208,11 +208,11 @@
 			isa = PBXGroup;
 			children = (
 				60B7A3D9248308250057086C /* LandingPage.swift */,
+				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
 				C1769A1524823B3500A71DAE /* LoginViewController.swift */,
 				C1DCA3F4248248BA00EF6696 /* FitBudyViewController.swift */,
 				C17BFE7524825FEA003BC4E2 /* OtherProfileViewController.swift */,
 				C17BFE7324825FD2003BC4E2 /* MyProfileViewController.swift */,
-				C1769A1724823C4A00A71DAE /* SignUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

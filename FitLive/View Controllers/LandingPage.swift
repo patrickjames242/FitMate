@@ -50,8 +50,7 @@ class LandingPage: UIViewController{
     }()
     
     @objc private func respondToLoginButtonPressed(){
-        let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "SignUpViewController")
-        self.present(vc, animated: true, completion: nil)
+        self.present(LoginViewController(), animated: true, completion: nil)
     }
     
     private lazy var signUpButton: UIButton = {
@@ -61,8 +60,8 @@ class LandingPage: UIViewController{
     }()
         
     @objc private func respondToSignUpButtonPressed(){
-        let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "LogInViewController")
-        self.present(vc, animated: true, completion: nil)
+        
+        self.present(SignUpViewController(), animated: true, completion: nil)
     }
     
     private func getNewLogInOrSignUpButton(text: String) -> UIButton{
