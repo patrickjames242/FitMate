@@ -7,14 +7,9 @@
 //
 
 import UIKit
-import FirebaseFirestore
 
 class FitBudyViewController: UIViewController {
     
-	static func getNew() -> UIViewController{
-		return UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "FitBuddiesVC")
-	}
-	
     @IBOutlet weak var tableView: UITableView!
 	
 	required init?(coder: NSCoder) {
@@ -23,46 +18,29 @@ class FitBudyViewController: UIViewController {
 	}
 	
 	private let cellID = "BUDDY_CELL"
-	
-	var buddies = [Networking.User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-		tableView.dataSource = self
+        tableView.dataSource = self
         tableView.delegate = self
 		tableView.register(BuddyTableViewCell.self, forCellReuseIdentifier: cellID)
 		tableView.delaysContentTouches = false
 		tableView.allowsSelection = false
 		tableView.rowHeight = 120
-		
-		setUpUsersObserver()
     }
 	
-	private func setUpUsersObserver(){
-		var listener: ListenerRegistration?
-		
-		listener = Networking.Firebase.observeUsers {[weak self] newUsers in
-			guard let self = self else {
-				listener?.remove()
-				return
-			}
-			self.buddies = newUsers
-			self.tableView.reloadData()
-		}
-	}
-	
-    
+    let buddies: [UserInfo] = Array(repeating: UserInfo(name: "Ina Obrien", username: "@inaobrien", points: 0), count: 10)
 	
 }
 
 extension FitBudyViewController: BuddyTableViewCellDelegate{
-	
 	func userWantsToCallPerson() {
 		let viewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "VideoCallVC")
 		self.present(viewController, animated: true)
 	}
-
+	
+	
+	
 }
 
 
@@ -75,7 +53,7 @@ extension FitBudyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BuddyTableViewCell
 		let item = buddies[indexPath.row]
-		cell.updateWith(name: item.displayName, username: item.username)
+		cell.updateWith(name: item.name, username: item.username)
 		cell.delegate = self
         return cell
     }
@@ -106,6 +84,7 @@ private class BuddyTableViewCell: UITableViewCell{
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
+		
 		let sides: CGFloat = 20
 		stackViewHolder.pinAllSides(addTo: contentView, pinTo: contentView, insets: UIEdgeInsets(top: sides / 2, left: sides, bottom: sides / 2, right: sides), activate: false).forEach{$0.priority = UILayoutPriority(999); $0.isActive = true}
 		
@@ -113,7 +92,7 @@ private class BuddyTableViewCell: UITableViewCell{
 	
 	func updateWith(name: String, username: String){
 		self.nameLabel.text = name
-		self.usernameLabel.text = "@" + username
+		self.usernameLabel.text = username
 	}
 	
 	private lazy var stackViewHolder: UIView = {
@@ -148,24 +127,20 @@ private class BuddyTableViewCell: UITableViewCell{
 	private lazy var labelStackView: UIStackView = {
 		let x = UIStackView(arrangedSubviews: [nameLabel, usernameLabel])
 		x.axis = .vertical
-		x.spacing = 3
-		x.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-		x.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		
 		return x
 	}()
 	
 	private lazy var nameLabel: UILabel = {
 		let x = UILabel()
-		x.font = ThemeFont.regular.getUIFont(size: 17)
-		x.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+		x.font = ThemeFont.regular.getUIFont(size: 20)
 		return x
 	}()
 	
 	private lazy var usernameLabel: UILabel = {
 		let x = UILabel()
-		x.font = ThemeFont.regular.getUIFont(size: 13)
+		x.font = ThemeFont.regular.getUIFont(size: 15)
 		x.textColor = UIColor.lightGray
-		x.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		return x
 	}()
 	
@@ -176,7 +151,6 @@ private class BuddyTableViewCell: UITableViewCell{
 		x.layer.cornerRadius = 10
 		x.layer.masksToBounds = true
 		x.pin(.height == 30)
-		x.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
 		x.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 		x.contentEdgeInsets.left = 10
 		x.contentEdgeInsets.right = 10

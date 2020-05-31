@@ -94,23 +94,8 @@ class SignUpViewController: UIViewController {
     }()
     
     @objc private func respondToSignUpButtonPressed(){
-        signUpButton.isUserInteractionEnabled = false
-        do{
-            let signUpInfo = try Networking.SignUpInfo(username: usernameTextField.text ?? "", displayName: nameTextField.text ?? "", password: passwordTextField.text ?? "", email: emailTextField.text ?? "")
-            Networking.signUp(info: signUpInfo) { result in
-                self.signUpButton.isUserInteractionEnabled = true
-                switch result{
-                case .success:
-                    self.present(FitBudyViewController.getNew(), animated: true, completion: nil)
-                case .failure(let error):
-                    self.displayErrorMessage(message: error.localizedDescription)
-                }
-                
-            }
-        } catch {
-            self.displayErrorMessage(message: error.localizedDescription)
-        }
-
+        let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "FitBuddiesVC")
+        self.present(vc, animated: true)
     }
     
     private lazy var logoView: UIImageView = {
@@ -118,11 +103,6 @@ class SignUpViewController: UIViewController {
         x.pin(.width == 105, .height == 83)
         return x
     }()
-    
-    
-    
-    
-    
     
 }
 

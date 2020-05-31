@@ -22,7 +22,7 @@ extension Networking{
             
             init(username: String, displayName: String, email: String, password: String) throws {
                 guard isValidEmail(email: email) else {throw GenericError("The email you entered was invalid.")}
-                guard Array(password).count >= 8 else {throw GenericError("Your password must be at least 8 characters long.")}
+                guard Array(password).count > 8 else {throw GenericError("Your password must be at least 8 characters long.")}
                 self.username = username
                 self.displayName = displayName
                 self.email = email
@@ -47,19 +47,13 @@ extension Networking{
                     logOut()
                 }
                 
-                let userId = result.user.uid
+                let userId = NSUUID().uuidString
                 let properties: [UserProperties] = [.username(info.username), .displayName(info.displayName), .email(info.email), .firebaseID(userId)]
                 
                 setUserInformation(userID: userId, propertyValues: properties) { setUserInfoResult in
                     switch setUserInfoResult{
                     case .success:
-                        
-                        let cancelSignUp = {
-                            deleteUserInformation(userID: userId, completion: nil)
-                            cancelSignUp()
-                        }
-                        
-                        completion(.success((getUserResolverFunction(firebaseUserID: userId), cancelSignUp)))
+                        completion(.success((getUserResolverFunction(firebaseUser: result.user), cancelSignUp)))
                     case .failure(let error):
                         cancelSignUp()
                         completion(.failure(error))
@@ -71,17 +65,17 @@ extension Networking{
         
         
         
-        private static func getUserResolverFunction(firebaseUserID: String) -> UserResolverFunction {
+        private static func getUserResolverFunction(firebaseUser: FirebaseAuth.User) -> UserResolverFunction {
             return { (quickBloxId, quickBloxPassword, completion) in
                 setUserInformation(
-                    userID: firebaseUserID,
+                    userID: firebaseUser.uid,
                     propertyValues: [.quickBloxId(quickBloxId), .quickBloxPassword(quickBloxPassword)]
                 ) { (setUserInfoResult) in
                     
                     switch setUserInfoResult{
                     case .success:
                         
-                        getUserInformation(userID: firebaseUserID) { getUserInfoResult in
+                        getUserInformation(userID: firebaseUser.uid) { getUserInfoResult in
                             completion(getUserInfoResult.flatMap({ userInfo -> CompletionResult<User> in
                                 if let user = userInfo?.userObject{
                                     return .success(user)
@@ -114,7 +108,6 @@ extension Networking{
                     switch userInfoResult{
                     case .success(let userInfoObject):
                         if let user = userInfoObject?.userObject{
-                            
                             completion(.success((user, cancelLogIn)))
                         } else {
                             completion(.failure(GenericError("The user object retreived from the getUserInformation function is not valid. Check the Firebase.logIn function.")))
@@ -216,25 +209,6 @@ extension Networking{
                 } else {
                     completion(.success(()))
                 }
-            }
-        }
-        
-        private static func deleteUserInformation(userID: String, completion: ((CompletionResult<Void>) -> Void)?){
-            usersCollection.document(userID).delete { error in
-                if let error = error{
-                    completion?(.failure(error))
-                } else {
-                    completion?(.success(()))
-                }
-            }
-        }
-        
-        
-        static func observeUsers(handleNewUsersArray: @escaping ([Networking.User]) -> ()) -> ListenerRegistration{
-            return usersCollection.addSnapshotListener { (snapshot, error) in
-                guard let snapshot = snapshot else {return}
-                let users = snapshot.documents.compactMap{ parseFirebaseUserInfoFrom(dict: $0.data()).userObject }
-                handleNewUsersArray(users)
             }
         }
         

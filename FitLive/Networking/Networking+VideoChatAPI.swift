@@ -32,13 +32,8 @@ extension Networking{
             let user = QBUUser()
             user.login = info.email
             user.password = info.password
-            
-            let cancelSignUp: () -> Void = {
-                QBRequest.deleteCurrentUser(successBlock: {_ in logOut()}, errorBlock: nil)
-            }
-            
             QBRequest.signUp(user, successBlock: { (response, user) in
-                completion(.success((Int(user.id), cancelSignUp)))
+                completion(.success((Int(user.id), logOut)))
             }, errorBlock: { completion(.failure($0.error?.error ?? GenericError("An error occured when trying to log in via QBRequest.signUp")))})
         }
         
