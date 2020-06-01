@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = CurrentUserManager.currentUser == nil ? LandingPage() : FitBudyViewController.getNew()
         window?.makeKeyAndVisible()
+        
+        window?.overrideUserInterfaceStyle = .light
 
         return true
     }
