@@ -17,7 +17,7 @@ class VideoChatViewController: UIViewController{
     
     init(otherCallerName: String?, workout: Workout){
         self.workout = workout
-        self.workoutTimer = WorkoutTimer(workout: workout, totalWorkoutTimeInSeconds: 60 * 5)
+        self.workoutTimer = WorkoutTimer(workout: workout, totalWorkoutTimeInSeconds: 4 * 5)
         self.otherCallerName = otherCallerName
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .fullScreen
@@ -40,12 +40,11 @@ class VideoChatViewController: UIViewController{
                 self.excerciseTimerView.setProgress(timeRemaining: 0, totalTime: 0)
             }
             self.exerciseImageView.image = state.map{UIImage(named: $0.exercise.imageName)!}
-            
+            self.exerciseNameLabel.text = state?.exercise.name
             if state == nil{
                 LiveChatBrain.default.hangUp()
                 self.dismiss(animated: true, completion: nil)
             }
-            
         }
         
         LiveChatBrain.default.callFailedNotification.listen(sender: self) {[weak self]  in
@@ -73,6 +72,7 @@ class VideoChatViewController: UIViewController{
         localVideoViewHolder.pin(addTo: view, .right == view.rightAnchor - 20, .top == navBarView.bottomAnchor + 20)
         buttonIconsHolderView.pin(addTo: view, .bottom == view.safeAreaLayoutGuide.bottomAnchor - 20, .centerX == view.centerXAnchor)
         exerciseImageView.pin(addTo: view, .centerX == view.centerXAnchor, .bottom == buttonIconsHolderView.topAnchor + 300 , .width == 1000, .height == 1000)
+        exerciseNameLabel.pin(addTo: view, .centerX == view.centerXAnchor, .bottom == buttonIconsHolderView.topAnchor - 30)
     }
     
     func setUpVideoViews(){
@@ -111,7 +111,18 @@ class VideoChatViewController: UIViewController{
         let x = UIImageView()
         x.contentMode = .scaleAspectFit
         x.tintColor = .white
-  
+        
+        
+        
+        return x
+    }()
+    
+    private lazy var exerciseNameLabel: UILabel = {
+        let x = UILabel()
+        x.textColor = .white
+        x.font = ThemeFont.bold.getUIFont(size: 18)
+        x.layer.shadowColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        x.layer.shadowRadius = 10
         return x
     }()
     
@@ -224,7 +235,9 @@ private class AnimatedCountDownTimer: UIView{
         return x
     }()
     
+    
     private let strokeWidth: CGFloat = 6
+    
     
     private lazy var whiteRing: CAShapeLayer = {
         let x = CAShapeLayer()
@@ -240,8 +253,6 @@ private class AnimatedCountDownTimer: UIView{
     }
     
     
-    
-    
     private func sizeAndPosition(ring: CAShapeLayer){
         ring.frame = self.bounds
         let radius = (self.bounds.width / 2) - (strokeWidth / 2)
@@ -249,8 +260,6 @@ private class AnimatedCountDownTimer: UIView{
         ring.path = path.cgPath
     }
 
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init coder has not being implemented")

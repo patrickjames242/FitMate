@@ -28,7 +28,7 @@ extension Workout{
         
         return [
             Workout(id: 0, name: "Astronaut", exercises: [
-                Exercise(name: "Log in Place", imageName: "Jog in Place"),
+                Exercise(name: "Jog in Place", imageName: "Jog in Place"),
                 Exercise(name: "Left Side Lunges", imageName: "Left Side Lunges"),
                 Exercise(name: "Pull Ups", imageName: "Pull Ups"),
                 Exercise(name: "Rest", imageName: "Rest")
